@@ -1,0 +1,119 @@
+### Inscription
+POST http://localhost:3001/auth/local/register
+Content-Type: application/json
+
+{
+  "email": "enzo@test.com",
+  "password": "Cisco123&"
+}
+
+### Connexion
+POST http://localhost:3001/auth/local
+Content-Type: application/json
+
+{
+  "identifier": "enzo@test.com",
+  "password": "Cisco123&"
+}
+
+### Créer un QCM géographie
+POST http://localhost:3001/qcms
+Content-Type: application/json
+
+{
+  "title": "QCM Géographie Europe",
+  "questions": [
+    {
+      "text": "Quelle est la capitale de la Norvège ?",
+      "choices": ["Stockholm", "Oslo", "Copenhague", "Helsinki"],
+      "correctChoiceIndex": 1
+    },
+    {
+      "text": "En quelle année la Pologne est-elle entrée dans l'Union européenne ?",
+      "choices": ["1999", "2001", "2004", "2007"],
+      "correctChoiceIndex": 2
+    },
+    {
+      "text": "Quelle est la capitale de la Hongrie ?",
+      "choices": ["Prague", "Varsovie", "Budapest", "Vienne"],
+      "correctChoiceIndex": 2
+    },
+    {
+      "text": "Quel pays a pour capitale Reykjavik ?",
+      "choices": ["Lichtenstein", "Islande", "Moldavie", "Estonie"],
+      "correctChoiceIndex": 1
+    }
+  ]
+}
+
+### Lister les QCMs
+GET http://localhost:3001/qcms
+
+### Supprimer un QCM
+DELETE http://localhost:3001/qcms/1
+
+### Voir les détails d'un QCM
+GET http://localhost:3001/qcms/2
+
+### Voir la prochaine question du QCM 2 pour l'utilisateur 1
+GET http://localhost:3001/qcms/2/question
+X-User-Id: 1
+
+### Répondre à une question du QCM 2 pour l'utilisateur 1
+POST http://localhost:3001/qcms/2/response
+Content-Type: application/json
+X-User-Id: 1
+
+{
+  "questionId": 5,
+  "choiceId": 18
+}
+
+### Voir la prochaine question du QCM 2 pour l'utilisateur 1
+GET http://localhost:3001/qcms/2/question
+X-User-Id: 1
+
+### Répondre à une question du QCM 2 pour l'utilisateur 1
+POST http://localhost:3001/qcms/2/response
+Content-Type: application/json
+X-User-Id: 1
+
+{
+  "questionId": 6,
+  "choiceId": 22
+}
+
+### voir la prochaine question du QCM 2 pour l'utilisateur 1
+GET http://localhost:3001/qcms/2/question
+X-User-Id: 1
+
+### Répondre à une question du QCM 2 pour l'utilisateur 1
+POST http://localhost:3001/qcms/2/response
+Content-Type: application/json
+X-User-Id: 1
+
+{
+  "questionId": 7,
+  "choiceId": 26
+}
+
+### voir la prochaine question du QCM 2 pour l'utilisateur 1
+GET http://localhost:3001/qcms/2/question
+X-User-Id: 1
+
+### Répondre à une question du QCM 2 pour l'utilisateur 1
+POST http://localhost:3001/qcms/2/response
+Content-Type: application/json
+X-User-Id: 1
+
+{
+  "questionId": 8,
+  "choiceId": 30
+}
+
+### Voir le résultat du QCM 2 pour l'utilisateur 1
+GET http://localhost:3001/qcms/2/result
+X-User-Id: 1
+
+### santé de l'API
+GET http://localhost:3001/health

@@ -1,0 +1,75 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int            @id @default(autoincrement())
+  email     String         @unique
+  password  String
+  createdAt DateTime       @default(now())
+  responses UserResponse[]
+}
+
+model Qcm {
+  id        Int      @id @default(autoincrement())
+  title     String
+  qcmId1    Int?
+  qcmId2    Int?
+  qcmId3    Int?
+  qcmId4    Int?
+  createdAt DateTime @default(now())
+
+  question1 Question? @relation("QcmQuestion1", fields: [qcmId1], references: [id])
+  question2 Question? @relation("QcmQuestion2", fields: [qcmId2], references: [id])
+  question3 Question? @relation("QcmQuestion3", fields: [qcmId3], references: [id])
+  question4 Question? @relation("QcmQuestion4", fields: [qcmId4], references: [id])
+}
+
+model Question {
+  id              Int    @id @default(autoincrement())
+  text            String
+  correctChoiceId Int?
+
+  correctChoice Choice? @relation("QuestionCorrectChoice", fields: [correctChoiceId], references: [id])
+
+  choices        Choice[]       @relation("QuestionChoices")
+  responses      UserResponse[]
+  qcmAsQuestion1 Qcm[]          @relation("QcmQuestion1")
+  qcmAsQuestion2 Qcm[]          @relation("QcmQuestion2")
+  qcmAsQuestion3 Qcm[]          @relation("QcmQuestion3")
+  qcmAsQuestion4 Qcm[]          @relation("QcmQuestion4")
+}
+
+model Choice {
+  id         Int    @id @default(autoincrement())
+  text       String
+  questionId Int
+
+  question   Question       @relation("QuestionChoices", fields: [questionId], references: [id], onDelete: Cascade)
+  responses  UserResponse[]
+  correctFor Question[]     @relation("QuestionCorrectChoice")
+}
+
+model UserResponse {
+  id         Int      @id @default(autoincrement())
+  userId     Int
+  questionId Int
+  choiceId   Int
+  createdAt  DateTime @default(now())
+
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  question Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  choice   Choice   @relation(fields: [choiceId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, questionId])
+}
