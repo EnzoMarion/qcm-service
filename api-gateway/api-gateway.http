@@ -1,0 +1,101 @@
+### Santé du gateway
+GET http://localhost:3000/health
+
+### Créer un QCM 3 via le gateway
+POST http://localhost:3000/api/qcms
+Content-Type: application/json
+
+{
+  "title": "QCM Géographie Europe via Gateway",
+  "questions": [
+    {
+      "text": "Quelle est la capitale de la Norvège ?",
+      "choices": ["Stockholm", "Oslo", "Copenhague", "Helsinki"],
+      "correctChoiceIndex": 1
+    },
+    {
+      "text": "En quelle année la Pologne est-elle entrée dans l'Union européenne ?",
+      "choices": ["1999", "2001", "2004", "2007"],
+      "correctChoiceIndex": 2
+    },
+    {
+      "text": "Quelle est la capitale de la Hongrie ?",
+      "choices": ["Prague", "Varsovie", "Budapest", "Vienne"],
+      "correctChoiceIndex": 2
+    },
+    {
+      "text": "Quel pays a pour capitale Reykjavik ?",
+      "choices": ["Lichtenstein", "Islande", "Moldavie", "Estonie"],
+      "correctChoiceIndex": 1
+    }
+  ]
+}
+
+### Lister les QCMs via le gateway
+GET http://localhost:3000/api/qcms
+
+### Voir les détails du QCM 3 via le gateway
+GET http://localhost:3000/api/qcms/3
+
+### Voir la prochaine question du QCM 3 pour l'utilisateur 1 via le gateway
+GET http://localhost:3000/api/qcms/3/question
+X-User-Id: 1
+
+### Répondre à la question 1 du QCM 3
+POST http://localhost:3000/api/qcms/3/response
+Content-Type: application/json
+X-User-Id: 1
+
+{
+  "questionId": 9,
+  "choiceId": 34
+}
+
+### Voir la prochaine question du QCM 3
+GET http://localhost:3000/api/qcms/3/question
+X-User-Id: 1
+
+### Répondre à la question 2 du QCM 3
+POST http://localhost:3000/api/qcms/3/response
+Content-Type: application/json
+X-User-Id: 1
+
+{
+  "questionId": 10,
+  "choiceId": 39
+}
+
+### Voir la prochaine question du QCM 3
+GET http://localhost:3000/api/qcms/3/question
+X-User-Id: 1
+
+### Répondre à la question 3 du QCM 3
+POST http://localhost:3000/api/qcms/3/response
+Content-Type: application/json
+X-User-Id: 1
+
+{
+  "questionId": 11,
+  "choiceId": 43
+}
+
+### Voir la prochaine question du QCM 3
+GET http://localhost:3000/api/qcms/3/question
+X-User-Id: 1
+
+### Répondre à la question 4 du QCM 3
+POST http://localhost:3000/api/qcms/3/response
+Content-Type: application/json
+X-User-Id: 1
+
+{
+  "questionId": 12,
+  "choiceId": 46
+}
+
+### Voir le résultat du QCM 3
+GET http://localhost:3000/api/qcms/3/result
+X-User-Id: 1
+
+### Tester les autres QCMs via le gateway
+GET http://localhost:3000/api/qcms/2
