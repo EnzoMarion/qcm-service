@@ -1,24 +1,10 @@
-### Inscription
-POST http://localhost:3001/auth/local/register
-Content-Type: application/json
+### Santé de l'API QCM
+GET http://localhost:3001/health
 
-{
-  "email": "enzo@test.com",
-  "password": "Cisco123&"
-}
-
-### Connexion
-POST http://localhost:3001/auth/local
-Content-Type: application/json
-
-{
-  "identifier": "enzo@test.com",
-  "password": "Cisco123&"
-}
-
-### Créer un QCM géographie
+### Créer un QCM
 POST http://localhost:3001/qcms
 Content-Type: application/json
+X-User-Id: 1
 
 {
   "title": "QCM Géographie Europe",
@@ -48,72 +34,3 @@ Content-Type: application/json
 
 ### Lister les QCMs
 GET http://localhost:3001/qcms
-
-### Supprimer un QCM
-DELETE http://localhost:3001/qcms/1
-
-### Voir les détails d'un QCM
-GET http://localhost:3001/qcms/2
-
-### Voir la prochaine question du QCM 2 pour l'utilisateur 1
-GET http://localhost:3001/qcms/2/question
-X-User-Id: 1
-
-### Répondre à une question du QCM 2 pour l'utilisateur 1
-POST http://localhost:3001/qcms/2/response
-Content-Type: application/json
-X-User-Id: 1
-
-{
-  "questionId": 5,
-  "choiceId": 18
-}
-
-### Voir la prochaine question du QCM 2 pour l'utilisateur 1
-GET http://localhost:3001/qcms/2/question
-X-User-Id: 1
-
-### Répondre à une question du QCM 2 pour l'utilisateur 1
-POST http://localhost:3001/qcms/2/response
-Content-Type: application/json
-X-User-Id: 1
-
-{
-  "questionId": 6,
-  "choiceId": 22
-}
-
-### voir la prochaine question du QCM 2 pour l'utilisateur 1
-GET http://localhost:3001/qcms/2/question
-X-User-Id: 1
-
-### Répondre à une question du QCM 2 pour l'utilisateur 1
-POST http://localhost:3001/qcms/2/response
-Content-Type: application/json
-X-User-Id: 1
-
-{
-  "questionId": 7,
-  "choiceId": 26
-}
-
-### voir la prochaine question du QCM 2 pour l'utilisateur 1
-GET http://localhost:3001/qcms/2/question
-X-User-Id: 1
-
-### Répondre à une question du QCM 2 pour l'utilisateur 1
-POST http://localhost:3001/qcms/2/response
-Content-Type: application/json
-X-User-Id: 1
-
-{
-  "questionId": 8,
-  "choiceId": 30
-}
-
-### Voir le résultat du QCM 2 pour l'utilisateur 1
-GET http://localhost:3001/qcms/2/result
-X-User-Id: 1
-
-### santé de l'API
-GET http://localhost:3001/health

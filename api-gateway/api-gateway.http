@@ -34,67 +34,67 @@ Content-Type: application/json
 ### Lister les QCMs via le gateway
 GET http://localhost:3000/api/qcms
 
-### Voir les détails du QCM 3 via le gateway
-GET http://localhost:3000/api/qcms/3
+### Voir les détails du QCM 1 via le gateway
+GET http://localhost:3000/api/qcms/1
 
-### Voir la prochaine question du QCM 3 pour l'utilisateur 1 via le gateway
-GET http://localhost:3000/api/qcms/3/question
+### Voir la prochaine question du QCM 1 pour l'utilisateur 1 via le gateway
+GET http://localhost:3000/api/qcms/1/question
 X-User-Id: 1
 
-### Répondre à la question 1 du QCM 3
-POST http://localhost:3000/api/qcms/3/response
+### Répondre à la question 1 du QCM 1
+POST http://localhost:3000/api/qcms/1/response
 Content-Type: application/json
 X-User-Id: 1
 
 {
-  "questionId": 9,
-  "choiceId": 34
+  "questionId": 4,
+  "choiceId": 15
 }
 
-### Voir la prochaine question du QCM 3
-GET http://localhost:3000/api/qcms/3/question
+### Voir la prochaine question du QCM 1
+GET http://localhost:3000/api/qcms/1/question
 X-User-Id: 1
 
-### Répondre à la question 2 du QCM 3
-POST http://localhost:3000/api/qcms/3/response
+### Répondre à la question 2 du QCM 1
+POST http://localhost:3000/api/qcms/1/response
 Content-Type: application/json
 X-User-Id: 1
 
 {
-  "questionId": 10,
-  "choiceId": 39
+  "questionId": 1,
+  "choiceId": 3
 }
 
-### Voir la prochaine question du QCM 3
-GET http://localhost:3000/api/qcms/3/question
+### Voir la prochaine question du QCM 1
+GET http://localhost:3000/api/qcms/1/question
 X-User-Id: 1
 
-### Répondre à la question 3 du QCM 3
-POST http://localhost:3000/api/qcms/3/response
+### Répondre à la question 3 du QCM 1
+POST http://localhost:3000/api/qcms/1/response
 Content-Type: application/json
 X-User-Id: 1
 
 {
-  "questionId": 11,
-  "choiceId": 43
+  "questionId": 2,
+  "choiceId": 7
 }
 
-### Voir la prochaine question du QCM 3
-GET http://localhost:3000/api/qcms/3/question
+### Voir la prochaine question du QCM 1
+GET http://localhost:3000/api/qcms/1/question
 X-User-Id: 1
 
-### Répondre à la question 4 du QCM 3
-POST http://localhost:3000/api/qcms/3/response
+### Répondre à la question 4 du QCM 1
+POST http://localhost:3000/api/qcms/1/response
 Content-Type: application/json
 X-User-Id: 1
 
 {
-  "questionId": 12,
-  "choiceId": 46
+  "questionId": 3,
+  "choiceId": 11
 }
 
-### Voir le résultat du QCM 3
-GET http://localhost:3000/api/qcms/3/result
+### Voir le résultat du QCM 1
+GET http://localhost:3000/api/qcms/1/result
 X-User-Id: 1
 
 ### Tester les autres QCMs via le gateway
