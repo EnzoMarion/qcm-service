@@ -99,3 +99,25 @@ X-User-Id: 1
 
 ### Tester les autres QCMs via le gateway
 GET http://localhost:3000/api/qcms/2
+
+### Inscription
+POST http://localhost:3002/auth/local/register
+Content-Type: application/json
+
+{
+  "email": "enzo@test.com",
+  "password": "Cisco123&"
+}
+
+### Connexion
+POST http://localhost:3002/auth/local
+Content-Type: application/json
+
+{
+  "identifier": "enzo@test.com",
+  "password": "Cisco123&"
+}
+
+### Profil connecté
+GET http://localhost:3002/users/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJlbnpvQHRlc3QuY29tIiwiaWF0IjoxNzgwNTYyMjIxLCJleHAiOjE3ODExNjcwMjF9.nUdhYm5wQdT2nXzObbpsVNITyYp_P5xSOm8WHn6hZSk
