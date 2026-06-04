@@ -12,9 +12,11 @@
   "license": "ISC",
   "description": "API Gateway for microservices architecture",
   "dependencies": {
+    "axios": "^1.17.0",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "http-proxy-middleware": "^3.0.5",
+    "jsonwebtoken": "^9.0.3",
     "tsx": "^4.21.0"
   },
   "devDependencies": {
